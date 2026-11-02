@@ -121,3 +121,4 @@ Inspection of the 85-frame reference animation reveals:
 ```
 
 This layering guarantees zero distortion, pixel-perfect alignment, and complete fidelity to the original design.
+

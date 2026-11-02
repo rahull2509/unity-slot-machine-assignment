@@ -235,3 +235,4 @@ namespace SlotMachineGame.Editor
         }
     }
 }
+

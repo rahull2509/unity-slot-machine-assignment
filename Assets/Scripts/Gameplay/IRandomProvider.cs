@@ -16,3 +16,4 @@ namespace SlotMachineGame.Gameplay
         int NextRange(int minInclusive, int maxExclusive);
     }
 }
+

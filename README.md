@@ -231,3 +231,4 @@ Detailed inspection metrics, bounding boxes, and alpha analysis are preserved in
 
 - **Browser Audio Autoplay**: Modern web browsers (Chrome, Edge, Safari) require user interaction (e.g. clicking the Spin or Bet button) before allowing Web Audio playback. The game gracefully supports this standard policy.
 - **WebGL Fullscreen**: Fullscreen mode is toggled via the footer icon or browser F11 fullscreen shortcut.
+

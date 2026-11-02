@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<test-run id="2" testcasecount="0" result="Passed" total="0" passed="0" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-11-02 16:28:43Z" end-time="2026-11-02 16:28:43Z" duration="0.0031805">
-  <test-suite type="TestSuite" id="1002" name="_test_unity" fullname="_test_unity" runstate="Runnable" testcasecount="0" result="Passed" start-time="2026-11-02 16:28:43Z" end-time="2026-11-02 16:28:43Z" duration="0.003181" total="0" passed="0" failed="0" inconclusive="0" skipped="0" asserts="0">
+<test-run id="2" testcasecount="0" result="Passed" total="0" passed="0" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-11-02 18:16:17Z" end-time="2026-11-02 18:16:17Z" duration="0.0049752">
+  <test-suite type="TestSuite" id="1002" name="_test_unity" fullname="_test_unity" runstate="Runnable" testcasecount="0" result="Passed" start-time="2026-11-02 18:16:17Z" end-time="2026-11-02 18:16:17Z" duration="0.004975" total="0" passed="0" failed="0" inconclusive="0" skipped="0" asserts="0">
     <properties>
       <property name="platform" value="PlayMode" />
     </properties>

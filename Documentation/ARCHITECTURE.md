@@ -113,3 +113,4 @@ sequenceDiagram
         SMC->>UI: Set State (Idle), Re-enable Controls
     end
 ```
+

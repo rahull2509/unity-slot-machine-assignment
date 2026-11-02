@@ -12,8 +12,8 @@ namespace SlotMachineGame.UI
     {
         [SerializeField] private Button decreaseButton;
         [SerializeField] private Button increaseButton;
-        [SerializeField] private TextMeshProUGUI betText;
         [SerializeField] private Text legacyBetText;
+        [SerializeField] private TextMeshProUGUI betText;
 
         public event Action OnIncreaseRequested;
         public event Action OnDecreaseRequested;
@@ -30,10 +30,10 @@ namespace SlotMachineGame.UI
         {
             string formatted = betValue.ToString("N0");
 
-            if (betText != null)
-                betText.text = formatted;
             if (legacyBetText != null)
                 legacyBetText.text = formatted;
+            if (betText != null)
+                betText.text = formatted;
 
             if (decreaseButton != null)
                 decreaseButton.interactable = !isSpinning && canDecrease;

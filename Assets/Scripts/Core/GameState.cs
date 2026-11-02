@@ -13,3 +13,4 @@ namespace SlotMachineGame.Core
         InsufficientFunds
     }
 }
+

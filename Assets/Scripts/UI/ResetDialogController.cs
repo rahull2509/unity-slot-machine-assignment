@@ -12,8 +12,8 @@ namespace SlotMachineGame.UI
     public class ResetDialogController : MonoBehaviour
     {
         [SerializeField] private GameObject dialogRoot;
-        [SerializeField] private TextMeshProUGUI messageText;
         [SerializeField] private Text legacyMessageText;
+        [SerializeField] private TextMeshProUGUI messageText;
         [SerializeField] private Button yesButton;
         [SerializeField] private Button noButton;
 
@@ -35,10 +35,10 @@ namespace SlotMachineGame.UI
             if (dialogRoot != null)
                 dialogRoot.SetActive(true);
 
-            if (messageText != null)
-                messageText.text = promptMessage;
             if (legacyMessageText != null)
                 legacyMessageText.text = promptMessage;
+            if (messageText != null)
+                messageText.text = promptMessage;
         }
 
         private void HandleYes()

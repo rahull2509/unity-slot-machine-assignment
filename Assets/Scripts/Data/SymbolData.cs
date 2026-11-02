@@ -32,3 +32,4 @@ namespace SlotMachineGame.Data
         public override string ToString() => $"Symbol #{symbolId} ({displayName}) [x{payoutMultiplier}]";
     }
 }
+
