@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb868469d89cac344a0e9ba7dbcb3727, type: 3}
+  m_Name: SymbolDatabase
+  m_EditorClassIdentifier: SlotMachineGame::SlotMachineGame.Data.SymbolDatabase
+  symbols:
+  - symbolId: 1
+    displayName: Lucky 7
+    sprite: {fileID: 21300000, guid: ac0250ce8d67c074893d049895dcae7a, type: 3}
+    payoutMultiplier: 10
+  - symbolId: 2
+    displayName: Cherries
+    sprite: {fileID: 21300000, guid: ad1a409b2dff8f94c9b0de2cecd8ddb1, type: 3}
+    payoutMultiplier: 5
+  - symbolId: 3
+    displayName: Bell
+    sprite: {fileID: 21300000, guid: c88334118885c7d449302f41d2db79b3, type: 3}
+    payoutMultiplier: 4
+  - symbolId: 4
+    displayName: BAR
+    sprite: {fileID: 21300000, guid: bfe72b67625130941b8d170cefc7d843, type: 3}
+    payoutMultiplier: 3
