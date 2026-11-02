@@ -19,9 +19,9 @@ namespace SlotMachineGame.Gameplay
         [SerializeField] private int[] betTiers = new int[] { 10, 20, 50, 100, 200, 500 };
 
         [Header("Runtime State")]
-        [SerializeField] private int currentBalance;
-        [SerializeField] private int currentBetIndex;
-        [SerializeField] private int lastPayout;
+        [SerializeField] private int currentBalance = 1000;
+        [SerializeField] private int currentBetIndex = 0;
+        [SerializeField] private int lastPayout = 0;
 
         public int CurrentBalance => currentBalance;
         public int CurrentBet => betTiers != null && betTiers.Length > 0 ? betTiers[currentBetIndex] : defaultBet;
@@ -41,7 +41,7 @@ namespace SlotMachineGame.Gameplay
 
         public void Initialize(int startingBalance, int startingBet)
         {
-            initialBalance = Mathf.Max(0, startingBalance);
+            initialBalance = startingBalance >= 0 ? startingBalance : 1000;
             currentBalance = initialBalance;
             lastPayout = 0;
 
@@ -72,13 +72,13 @@ namespace SlotMachineGame.Gameplay
         public bool TryDeductBet()
         {
             int bet = CurrentBet;
-            if (currentBalance < bet)
+            if (bet <= 0 || currentBalance < bet)
             {
                 OnInsufficientFunds?.Invoke();
                 return false;
             }
 
-            currentBalance -= bet;
+            currentBalance = Mathf.Max(0, currentBalance - bet);
             OnBalanceChanged?.Invoke(currentBalance);
             return true;
         }
@@ -89,7 +89,16 @@ namespace SlotMachineGame.Gameplay
                 throw new ArgumentException("Win credit cannot be negative.", nameof(amount));
 
             lastPayout = amount;
-            currentBalance += amount;
+            long newBalance = (long)currentBalance + amount;
+            if (newBalance > int.MaxValue)
+            {
+                currentBalance = int.MaxValue;
+            }
+            else
+            {
+                currentBalance = (int)newBalance;
+            }
+
             OnPayoutAwarded?.Invoke(amount);
             OnBalanceChanged?.Invoke(currentBalance);
         }
@@ -130,7 +139,7 @@ namespace SlotMachineGame.Gameplay
 
         public void ResetWallet()
         {
-            currentBalance = initialBalance;
+            currentBalance = initialBalance > 0 ? initialBalance : 1000;
             currentBetIndex = 0;
             lastPayout = 0;
             OnBalanceChanged?.Invoke(currentBalance);

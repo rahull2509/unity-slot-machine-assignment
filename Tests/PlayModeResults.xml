@@ -1,8 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<test-run id="2" testcasecount="0" result="Passed" total="0" passed="0" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-11-02 18:16:17Z" end-time="2026-11-02 18:16:17Z" duration="0.0049752">
-  <test-suite type="TestSuite" id="1002" name="_test_unity" fullname="_test_unity" runstate="Runnable" testcasecount="0" result="Passed" start-time="2026-11-02 18:16:17Z" end-time="2026-11-02 18:16:17Z" duration="0.004975" total="0" passed="0" failed="0" inconclusive="0" skipped="0" asserts="0">
+<test-run id="2" testcasecount="4" result="Passed" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-11-02 18:59:36Z" end-time="2026-11-02 18:59:36Z" duration="0.0785515">
+  <test-suite type="TestSuite" id="1010" name="_test_unity" fullname="_test_unity" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-11-02 18:59:36Z" end-time="2026-11-02 18:59:36Z" duration="0.078552" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
     <properties>
       <property name="platform" value="PlayMode" />
     </properties>
+    <test-suite type="Assembly" id="1006" name="SlotMachineGame.PlayModeTests.dll" fullname="C:/Users/rahul/Code/SlotMachineGame/Library/ScriptAssemblies/SlotMachineGame.PlayModeTests.dll" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-11-02 18:59:36Z" end-time="2026-11-02 18:59:36Z" duration="0.067907" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="15392" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestSuite" id="1007" name="SlotMachineGame" fullname="SlotMachineGame" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-11-02 18:59:36Z" end-time="2026-11-02 18:59:36Z" duration="0.066868" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1008" name="Tests" fullname="SlotMachineGame.Tests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-11-02 18:59:36Z" end-time="2026-11-02 18:59:36Z" duration="0.066313" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1001" name="SlotMachineControllerTests" fullname="SlotMachineGame.Tests.SlotMachineControllerTests" classname="SlotMachineGame.Tests.SlotMachineControllerTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-11-02 18:59:36Z" end-time="2026-11-02 18:59:36Z" duration="0.065052" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1002" name="InitialState_IsIdle" fullname="SlotMachineGame.Tests.SlotMachineControllerTests.InitialState_IsIdle" methodname="InitialState_IsIdle" classname="SlotMachineGame.Tests.SlotMachineControllerTests" runstate="Runnable" seed="375041285" result="Passed" start-time="2026-11-02 18:59:36Z" end-time="2026-11-02 18:59:36Z" duration="0.035482" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1004" name="RequestSpin_WhileAlreadySpinning_IsRejected" fullname="SlotMachineGame.Tests.SlotMachineControllerTests.RequestSpin_WhileAlreadySpinning_IsRejected" methodname="RequestSpin_WhileAlreadySpinning_IsRejected" classname="SlotMachineGame.Tests.SlotMachineControllerTests" runstate="Runnable" seed="939898102" result="Passed" start-time="2026-11-02 18:59:36Z" end-time="2026-11-02 18:59:36Z" duration="0.005937" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1005" name="RequestSpin_WithInsufficientBalance_IsRejected" fullname="SlotMachineGame.Tests.SlotMachineControllerTests.RequestSpin_WithInsufficientBalance_IsRejected" methodname="RequestSpin_WithInsufficientBalance_IsRejected" classname="SlotMachineGame.Tests.SlotMachineControllerTests" runstate="Runnable" seed="90172369" result="Passed" start-time="2026-11-02 18:59:36Z" end-time="2026-11-02 18:59:36Z" duration="0.004080" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1003" name="RequestSpin_WithSufficientBalance_StartsSpinAndDeductsBet" fullname="SlotMachineGame.Tests.SlotMachineControllerTests.RequestSpin_WithSufficientBalance_StartsSpinAndDeductsBet" methodname="RequestSpin_WithSufficientBalance_StartsSpinAndDeductsBet" classname="SlotMachineGame.Tests.SlotMachineControllerTests" runstate="Runnable" seed="763518383" result="Passed" start-time="2026-11-02 18:59:36Z" end-time="2026-11-02 18:59:36Z" duration="0.003587" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Saving results to: Tests/PlayModeResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
   </test-suite>
 </test-run>

@@ -1,18 +1,19 @@
 {
-    "name": "SlotMachineGame.PlayModeTests",
+    "name": "SlotMachineGame.EditModeTests",
     "rootNamespace": "SlotMachineGame.Tests",
     "references": [
-        "SlotMachineGame",
-        "UnityEngine.TestRunner",
-        "UnityEditor.TestRunner"
+        "SlotMachineGame"
     ],
-    "includePlatforms": [],
+    "optionalUnityReferences": [
+        "TestAssemblies"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
-    "overrideReferences": true,
-    "precompiledReferences": [
-        "nunit.framework.dll"
-    ],
+    "overrideReferences": false,
+    "precompiledReferences": [],
     "autoReferenced": false,
     "defineConstraints": [
         "UNITY_INCLUDE_TESTS"
@@ -20,4 +21,3 @@
     "versionDefines": [],
     "noEngineReferences": false
 }
-

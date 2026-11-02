@@ -41,6 +41,7 @@ namespace SlotMachineGame.Tests
             {
                 var reelGo = new GameObject($"Reel_{i}");
                 reelGo.transform.SetParent(rootGo.transform);
+                reelGo.AddComponent<ReelAnimator>();
                 var rc = reelGo.AddComponent<ReelController>();
                 // Add dummy symbol views
                 for (int v = 0; v < 3; v++)

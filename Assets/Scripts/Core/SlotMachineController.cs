@@ -149,7 +149,7 @@ namespace SlotMachineGame.Core
             {
                 currentState = GameState.InsufficientFunds;
                 uiManager?.SetStatusMessage("INSUFFICIENT COINS! LOWER BET OR RESET.");
-                uiManager?.ResetDialog.Show("Out of coins for this bet! Reset balance to 1,000?");
+                uiManager?.ResetDialog?.Show("Out of coins for this bet! Reset balance to 1,000?");
                 return false;
             }
 
@@ -217,25 +217,35 @@ namespace SlotMachineGame.Core
             // Brief pause to allow settle bounce to finish
             yield return new WaitForSeconds(0.25f);
 
+            if (reels == null || reels.Length < 3 || reels[0] == null || reels[1] == null || reels[2] == null)
+            {
+                Debug.LogWarning("[SlotMachineController] Reels not properly configured for outcome evaluation.");
+                currentState = GameState.Idle;
+                uiManager?.SetSpinInteractable(true);
+                yield break;
+            }
+
             int s1 = reels[0].CurrentCenterSymbolId;
             int s2 = reels[1].CurrentCenterSymbolId;
             int s3 = reels[2].CurrentCenterSymbolId;
 
-            WinEvaluationResult result = winningEvaluator.EvaluateCenterLine(s1, s2, s3);
+            WinEvaluationResult result = winningEvaluator != null 
+                ? winningEvaluator.EvaluateCenterLine(s1, s2, s3) 
+                : WinEvaluationResult.Loss("Evaluator unavailable.");
             int payoutAmount = 0;
 
             if (result.IsWin)
             {
                 currentState = GameState.Win;
                 int bet = walletManager != null ? walletManager.CurrentBet : 10;
-                payoutAmount = payoutCalculator.CalculatePayout(result.WinningSymbolId, bet);
+                payoutAmount = payoutCalculator != null ? payoutCalculator.CalculatePayout(result.WinningSymbolId, bet) : 0;
 
                 if (walletManager != null)
                 {
                     walletManager.CreditWin(payoutAmount);
                 }
 
-                SymbolData winSymbol = symbolDatabase.GetSymbolById(result.WinningSymbolId);
+                SymbolData winSymbol = symbolDatabase != null ? symbolDatabase.GetSymbolById(result.WinningSymbolId) : null;
                 string symbolName = winSymbol != null ? winSymbol.DisplayName : $"Symbol #{result.WinningSymbolId}";
 
                 if (uiManager != null)

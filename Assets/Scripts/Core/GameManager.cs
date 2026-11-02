@@ -36,7 +36,7 @@ namespace SlotMachineGame.Core
         private void Start()
         {
             if (slotMachineController == null)
-                slotMachineController = FindFirstObjectByType<SlotMachineController>();
+                slotMachineController = FindAnyObjectByType<SlotMachineController>();
         }
     }
 }

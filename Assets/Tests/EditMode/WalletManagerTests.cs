@@ -114,6 +114,41 @@ namespace SlotMachineGame.Tests
             Assert.AreEqual(10, wallet.CurrentBet);
             Assert.AreEqual(0, wallet.LastPayout);
         }
+
+        [Test]
+        public void CreditWin_NegativeAmount_ThrowsArgumentException()
+        {
+            Assert.Throws<System.ArgumentException>(() => wallet.CreditWin(-50));
+        }
+
+        [Test]
+        public void CreditWin_PotentialOverflow_CapsAtIntMaxValueWithoutWrapping()
+        {
+            wallet.Initialize(int.MaxValue - 100, 10);
+            wallet.CreditWin(500);
+
+            Assert.AreEqual(int.MaxValue, wallet.CurrentBalance);
+            Assert.GreaterOrEqual(wallet.CurrentBalance, 0);
+        }
+
+        [Test]
+        public void TryDeductBet_NeverAllowsNegativeBalance()
+        {
+            wallet.Initialize(0, 10);
+            bool deducted = wallet.TryDeductBet();
+
+            Assert.IsFalse(deducted);
+            Assert.AreEqual(0, wallet.CurrentBalance);
+        }
+
+        [Test]
+        public void ResetWallet_WhenInitialBalanceWasInvalid_RestoresSafeDefault()
+        {
+            wallet.Initialize(-100, 10);
+            wallet.ResetWallet();
+
+            Assert.AreEqual(1000, wallet.CurrentBalance);
+        }
     }
 }
 

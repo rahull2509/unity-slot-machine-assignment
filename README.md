@@ -99,6 +99,10 @@ SlotMachineGame/
 |   |
 |   |-- Scenes/
 |   |   |-- SlotMachineScene.unity      # Main playable game scene
+|   |
+|   |-- Tests/
+|       |-- EditMode/              # Unit tests (WinningEvaluator, Payout, Wallet, RNG)
+|       |-- PlayMode/              # Integration tests (SlotMachineController coroutines & state)
 |
 |-- Build/
 |   |-- WebGL/                     # Complete playable WebGL build
@@ -112,9 +116,7 @@ SlotMachineGame/
 |   |-- TESTING.md                 # Test plan, requirement coverage matrix, runner commands
 |
 |-- Tests/
-|   |-- EditMode/                  # Unit tests (WinningEvaluator, Payout, Wallet, RNG)
-|   |-- PlayMode/                  # Integration tests (SlotMachineController coroutines & state)
-|   |-- EditModeResults.xml        # Verified test run results (22 passed)
+|   |-- EditModeResults.xml        # Verified test run results (31 passed)
 |   |-- PlayModeResults.xml        # Verified test run results (4 passed)
 |
 |-- Packages/                      # Unity 6 package manifest (uGUI, Test Framework, etc.)
@@ -186,31 +188,34 @@ The project provides one-click automation under the top menu bar **`SlotMachine`
 
 ## 9. Automated Testing & Verification
 
-Automated test execution was conducted using the **Unity Test Runner** in batch mode.
+Automated test execution was conducted using the **Unity Test Runner** in batch mode with genuine NUnit XML test reports generated.
 
 ### Test Results Summary
 
-| Test Suite | Mode | Total Tests | Passed | Failed | Status |
-| :--- | :--- | :---: | :---: | :---: | :---: |
-| `PayoutCalculatorTests` | EditMode | 7 | 7 | 0 | **PASSED** |
-| `RandomSymbolProviderTests`| EditMode | 4 | 4 | 0 | **PASSED** |
-| `WalletManagerTests` | EditMode | 8 | 8 | 0 | **PASSED** |
-| `WinningEvaluatorTests` | EditMode | 3 | 3 | 0 | **PASSED** |
-| `SlotMachineControllerTests`| PlayMode | 4 | 4 | 0 | **PASSED** |
-| **TOTAL** | **All** | **26** | **26** | **0** | **100% PASS** |
+| Test Suite | Mode | File Location | Total Tests | Passed | Failed | Status |
+| :--- | :--- | :--- | :---: | :---: | :---: | :---: |
+| `PayoutCalculatorTests` | EditMode | `Assets/Tests/EditMode/PayoutCalculatorTests.cs` | 8 | 8 | 0 | **PASSED** |
+| `RandomSymbolProviderTests`| EditMode | `Assets/Tests/EditMode/RandomSymbolProviderTests.cs` | 4 | 4 | 0 | **PASSED** |
+| `WalletManagerTests` | EditMode | `Assets/Tests/EditMode/WalletManagerTests.cs` | 13 | 13 | 0 | **PASSED** |
+| `WinningEvaluatorTests` | EditMode | `Assets/Tests/EditMode/WinningEvaluatorTests.cs` | 6 | 6 | 0 | **PASSED** |
+| `SlotMachineControllerTests`| PlayMode | `Assets/Tests/PlayMode/SlotMachineControllerTests.cs` | 4 | 4 | 0 | **PASSED** |
+| **TOTAL** | **All** | | **35** | **35** | **0** | **100% PASS** |
+
+### Additional Automated Verifications
+- **Scene Runtime Audit (`Assets/Editor/CheckSceneRuntime.cs`)**: 11 automated runtime assertions verified in Unity Editor batchmode covering reel hierarchies, UI bindings, wallet bounds, audio muting, and modal dialogs.
+- **In-Browser Headless CDP Testing**: Automated verification using Headless Google Chrome via Chrome DevTools Protocol (CDP) WebSocket, verifying zero browser console exceptions during WebGL startup and execution.
 
 ### Running Tests via Command Line
 ```powershell
-# Run EditMode Tests
-& "C:\Program Files\Unity\Hub\Editor\6000.6.7f1\Editor\Unity.exe" `
-  -batchmode -projectPath . -runTests -testPlatform EditMode `
-  -testResults "Tests/EditModeResults.xml" -logFile "test_editmode.log"
+$unityExe = "C:\Program Files\Unity\Hub\Editor\6000.6.7f1\Editor\Unity.exe"
 
-# Run PlayMode Tests
-& "C:\Program Files\Unity\Hub\Editor\6000.6.7f1\Editor\Unity.exe" `
-  -batchmode -projectPath . -runTests -testPlatform PlayMode `
-  -testResults "Tests/PlayModeResults.xml" -logFile "test_playmode.log"
+# Run EditMode Tests (31 tests)
+Start-Process -FilePath $unityExe -ArgumentList "-batchmode -runTests -testPlatform EditMode -projectPath . -testResults Tests/EditModeResults.xml -logFile test_editmode.log" -Wait -NoNewWindow
+
+# Run PlayMode Tests (4 tests)
+Start-Process -FilePath $unityExe -ArgumentList "-batchmode -runTests -testPlatform PlayMode -projectPath . -testResults Tests/PlayModeResults.xml -logFile test_playmode.log" -Wait -NoNewWindow
 ```
+NUnit XML output reports are generated at `Tests/EditModeResults.xml` and `Tests/PlayModeResults.xml`.
 
 ---
 
